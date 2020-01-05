@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Router, Route, Redirect} from 'react-router-dom';
+import './App.scss';
+import {BrowserRouter as Router , Route, Redirect} from 'react-router-dom';
 import Home from './components/Home';
 import FilterPage from './components/FilterPage';
 
