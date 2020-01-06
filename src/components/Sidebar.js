@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import World  from '../assets/world.png';
-import About  from '../assets/question.png';
+import About  from '../assets/white-question.png';
 import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {

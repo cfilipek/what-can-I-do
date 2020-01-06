@@ -1,6 +1,5 @@
 import React, { Component }  from 'react';
-import Arrow from '../assets/arrow.png';
-import { Link } from "react-router-dom";
+import Arrow from '../assets/white-arrow.png';
 
 class Home extends Component {
 
@@ -18,29 +17,30 @@ class Home extends Component {
     }
 
   handleOnClick = (e) => {
-    e.preventDefault(); //prevent transition
+    e.preventDefault();
     this.rotate();
-    // and after timeout
+
     window.setTimeout(() => {
        this.props.history.push('/to-help')
-       // history is available by design in this.props when using react-router
-    }, 1000) // 3000 means 3 seconds
+    }, 1000)
 };
 
   render()
   {
     return(
-    <div className="container">
-      <div className="header-titles">
-        <h1>The world is going to shit.</h1>
-        <h1>What can I do?</h1>
-      </div>
-      <div className="subtitle">
-        <h4>Let’s figure it out. Together.</h4>
-        <div onClick={this.handleOnClick}>
-          <img className={`arrow ${this.state.animation}`} src={Arrow} alt="arrow logo"/>
+    <div>
+      <div className="container">
+        <div className="header-titles">
+          <h1>The world is going to shit.</h1>
+          <h1>What can I do?</h1>
         </div>
       </div>
+        <div className="subtitle">
+          <h4>Let’s figure it out. Together.</h4>
+          <div onClick={this.handleOnClick}>
+            <img className={`arrow ${this.state.animation}`} src={Arrow} alt="arrow logo"/>
+          </div>
+        </div>
 
     </div>)}
 }
