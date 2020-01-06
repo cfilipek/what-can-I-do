@@ -44,6 +44,16 @@ h4 {
   width: -webkit-fill-available;
 }
 
+.black-corner {
+  background-color: black;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  width: -webkit-fill-available;
+  height: 200px;
+}
+
 .arrow {
   width: 15%;
   padding-bottom: 120px;
@@ -68,7 +78,7 @@ h4 {
 .logo {
   position: fixed;
   top: 0;
-  margin: 80px 32px;
+  margin: 40px 32px;
   cursor: pointer;
 }
 
@@ -91,7 +101,7 @@ h4 {
   text-align: center;
   position: fixed;
   bottom: 0;
-  margin: 80px 32px;
+  margin: 40px 32px;
   cursor: pointer;
 }
 
@@ -114,7 +124,7 @@ h4 {
 	display: flex;
 	flex-direction: column;
 	left: 0;
-	overflow: hidden;
+  overflow: hidden;
 	position: relative;
 	top: 0;
 	width: 100%;
@@ -169,17 +179,17 @@ h4 {
   }
   .container {
     margin: 0px 100px;
-    margin-top: 200px;
+    margin-top: 180px;
   }
 }
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   h1 {
     font-size: 40px;
   }
   .container {
     margin: 0px 100px;
-    margin-top: 240px;
+    margin-top: 200px;
   }
 }

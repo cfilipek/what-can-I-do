@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import World  from '../assets/world.png';
-import About  from '../assets/white-question.png';
+import About  from '../assets/white-question-02.png';
 import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
 
   render () {
+
     return (
       <div className="sidebar-container">
         <div className="logo">

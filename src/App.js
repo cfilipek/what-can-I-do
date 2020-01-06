@@ -6,6 +6,7 @@ import Home from './components/Home';
 import FilterPage from './components/FilterPage';
 import Sidebar from './components/Sidebar';
 
+
 const App = () => (
   <Router>
     <Sidebar/>
