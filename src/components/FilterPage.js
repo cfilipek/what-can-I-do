@@ -4,7 +4,9 @@ import MultiSelect from './MultiSelect';
 class FilterPage extends Component {
   render () {
     return (
-      <MultiSelect value={ [ 'apples', 'oranges', 'peach', 'pears', 'plums' ] } />
+      <div className="container">
+        <MultiSelect value={ [ 'apples', 'oranges', 'peach', 'pears', 'plums' ] } />
+      </div>
     )
   }
 }

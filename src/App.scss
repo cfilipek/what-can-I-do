@@ -1,6 +1,7 @@
 
 // Fonts & basics
 $default-font: 'Rubik', sans-serif;
+$secondary-font: 'Special Elite', cursive;
 
 // Colors.
 $light-gray-100: #f8f9f9;
@@ -10,12 +11,37 @@ body {
   font-family: $default-font;
 }
 
+h1 {
+  font-family: $secondary-font;
+  font-size: 90px;
+}
+
 //css grid styling
 
 .container {
-  margin: 0px 140px;
+  margin: 0px 240px;
   // display: grid;
   // grid-template-columns: repeat(10, 1fr);
+}
+
+.header-titles {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.subtitle {
+  text-align: center;
+}
+
+.arrow {
+  width: 25%;
+  cursor: pointer;
+}
+
+.arrow:active {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 //sidebar styling
@@ -28,8 +54,9 @@ body {
 }
 
 .logo {
-  text-align: center;
-  margin-top: 20px;
+  position: fixed;
+  top: 0;
+  margin: 40px 32px;
   cursor: pointer;
 }
 
