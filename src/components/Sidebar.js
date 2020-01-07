@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import World  from '../assets/world.png';
 import About  from '../assets/white-question-02.png';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
+
 
 class Sidebar extends Component {
 
@@ -15,10 +16,38 @@ class Sidebar extends Component {
 			isInnerModalOpen: false
 		};
 
-		// bind functions
+    // bind functions
+    this.setWrapperRef = this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 		this.openModal = this.openModal.bind(this);
-	}
+  }
+
+  setWrapperRef(node) {
+    this.wrapperRef = node;
+  }
+
+  componentDidMount() {
+    document.addEventListener("mousedown", this.handleClick, false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("mousedown", this.handleClick, false);
+  }
+
+  handleClickOutside() {
+      this.closeModal();
+  }
+
+  handleClick = e => {
+    console.log(e.target)
+    if (this.submitPopoverRef.contains(e.target)) {
+      return;
+    }
+    this.handleClickOutside();
+  };
+
 
 	// close modal (set isModalOpen, true)
 	closeModal() {
@@ -32,12 +61,12 @@ class Sidebar extends Component {
 		this.setState({
 			isModalOpen: true
 		});
-	}
+  }
 
   render () {
 
     return (
-      <div className="sidebar-container">
+      <div className="sidebar-container" ref={node => this.submitPopoverRef = node}>
         <div className="logo">
           <Link to="/"><img src={World} alt="world logo"/></Link>
         </div>
@@ -49,7 +78,7 @@ class Sidebar extends Component {
         }
         <Modal
 					isModalOpen={this.state.isModalOpen}
-					closeModal={this.closeModal}
+          closeModal={this.closeModal}
 				>
 					<div className="modal-text">
             <h5>About this project:</h5>
