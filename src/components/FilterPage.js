@@ -12,7 +12,7 @@ class FilterPage extends Component {
             <h1>What I can do.</h1>
           </div>
           <Select/>
-          <MultiSelect value={ [ 'apples', 'oranges', 'peach', 'pears', 'plums' ] } />
+          {/* <MultiSelect value={ [ 'apples', 'oranges', 'peach', 'pears', 'plums' ] } /> */}
         </div>
         {/* <div className="black-corner"></div> */}
       </div>
