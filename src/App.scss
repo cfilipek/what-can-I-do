@@ -16,9 +16,23 @@ h1 {
   font-size: 60px;
 }
 
+h5 {
+  font-size: 25px;
+}
+
 h4 {
   margin-top: -20px;
   font-weight: 400;
+  font-size: 20px;
+}
+
+h6 {
+  font-weight: 400;
+  font-size: 18px;
+}
+
+a {
+  font-weight: 700;
 }
 
 //css grid styling
@@ -176,16 +190,20 @@ h4 {
 
 $grey: #b8bbc8;
 $dark-grey: #717790;
+$white: #fff;
 $input-width: 500px;
 
 .wrapper {
   position: relative;
-  margin-top: 60px;
+  margin-top: 100px;
+  background-color: black;
+  padding: 20px;
+  color: #fff;
 }
 
 input{
   border: none;
-  color: $grey;
+  background-color: black;
   font-size: 25px;
   font-weight: 700;
   padding-bottom: 5px;
@@ -194,8 +212,12 @@ input{
     outline: none;
     }
 ::placeholder {
-  color: $grey;
+  color: $white !important;
   }
+}
+
+input::-webkit-input-placeholder{
+  color:$white;
 }
 
 .search-icon {
@@ -216,7 +238,7 @@ input{
   cursor: pointer;
   position: absolute;
   width: 20px;
-  top: 15px;
+  top: 30px;
   right: 45px;
   &:hover {
     color: $dark-grey;
@@ -235,10 +257,11 @@ input{
  }
 
 .dropdown-options{
+  background-color: black;
   cursor: pointer;
   font-size: 20px;
   color: $grey;
-  padding: 5px 2px;
+  padding: 25px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -262,6 +285,59 @@ input{
   -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }
 
+//modal styling
+
+.modal-container {
+  background-color: black;
+  padding: 20px;
+  z-index: 300;
+  margin: 0 auto;
+  width: 300%;
+  height: 500px;
+  border: 2px solid $white;
+  border-radius: 8px;
+  overflow-y: scroll;
+  padding: 40px 100px;
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: $white;
+    margin-right: 5px;
+  }
+}
+
+.modal-button {
+  border-radius: 4px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 80px;
+  border: 2px solid $white;
+  background-color: black;
+  color: $white;
+  font-size: 18px;
+}
+
+.modal-button:hover {
+  background-color: yellow;
+  color: black;
+}
+
+.center-button {
+  text-align: center;
+}
+
+.modal-text {
+  color: $white;
+}
+
+.modal-bottom {
+  padding-top: 20px;
+  font-size: 12px !important;
+}
+
 @media only screen and (max-width: 1000px) {
   h1 {
     font-size: 60px;
@@ -270,6 +346,16 @@ input{
     margin: 0px 100px;
     margin-top: 180px;
   }
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  margin-right: 5px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: yellow;
+  margin-right: 5px;
 }
 
 
