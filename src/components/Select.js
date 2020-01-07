@@ -163,6 +163,7 @@ class Select extends Component {
 
   onClear() {
     this.setState({ currentText: "", option: {}, focusedIndex: 0 });
+    this.props.selectInterest(null)
   }
 
 }
@@ -173,6 +174,8 @@ const mapStateToProps = (state) => {
       interests: state.interests
     };
   }
+
+
 
   const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({selectInterest: selectInterest}, dispatch)

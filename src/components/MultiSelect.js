@@ -98,7 +98,7 @@ class Multiselect extends Component {
 						{ item }
 					</span>
 				) ) :
-				'Select Items...'
+				'Select applicable categories...'
 		);
 	}
 
