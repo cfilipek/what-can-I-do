@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MultiSelect from './MultiSelect';
 import Select from './Select';
+import {connect} from 'react-redux';
 
 class FilterPage extends Component {
   render () {
@@ -12,7 +13,8 @@ class FilterPage extends Component {
             <h1>What I can do.</h1>
           </div>
           <Select/>
-          {/* <MultiSelect value={ [ 'apples', 'oranges', 'peach', 'pears', 'plums' ] } /> */}
+         { this.props.activeInterest ?
+          (<MultiSelect/>): (null)}
         </div>
         {/* <div className="black-corner"></div> */}
       </div>
@@ -20,4 +22,11 @@ class FilterPage extends Component {
   }
 }
 
-export default FilterPage;
+const mapStateToProps = (state) => {
+  return{
+    activeInterest: state.activeInterest
+  };
+}
+
+
+export default connect(mapStateToProps, null)(FilterPage);

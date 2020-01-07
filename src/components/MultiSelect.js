@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class Multiselect extends Component {
-  constructor( props ) {
-		super( props );
+  constructor(  ) {
+		super(  );
 
 		this.state = {
 			selectedItems: [],
 			expanded: true,
-			inputValue: props.value,
 		};
 
 		this.handleChange = this.handleChange.bind( this );
@@ -78,16 +78,15 @@ class Multiselect extends Component {
 	}
 
 	renderDropdown = () => {
-		const inputValue = this.state.inputValue;
 
 		return (
-			inputValue.map( ( item, index ) => (
-				<React.Fragment key={ `${ item }-${ index } ` }>
-					<input id={ item } type="checkbox" value={ item } onChange={ this.handleChange } ref={ input => this[ `checkbox${ item }` ] = input } checked={ this.checkStatus( item ) } />
-					<label htmlFor={ item }>{ item }</label>
+			this.props.activeInterest.categories? (this.props.activeInterest.categories.map( ( item, index ) => (
+				<React.Fragment key={index}>
+					<input id={ item.title } type="checkbox" value={ item.title } onChange={ this.handleChange } ref={ input => this[ `checkbox${ item.title }` ] = input } checked={ this.checkStatus( item.title ) } />
+					<label htmlFor={ item.title }>{ item.title }</label>
 				</React.Fragment>
 			) )
-		);
+		): (null))
 	}
 
 	hydrateInput() {
@@ -105,7 +104,8 @@ class Multiselect extends Component {
 
 	render() {
 		return (
-			<form>
+			this.props.activeInterest.categories?
+			(<form>
 				<div className="multiselect-wrapper">
 					<div className={ 'select-input' }>
 						{ this.hydrateInput() }
@@ -115,10 +115,17 @@ class Multiselect extends Component {
 					</div>
 
 				</div>
-			</form>
+			</form>) : (null)
 		);
 	}
 }
 
 
-export default Multiselect;
+const mapStateToProps = (state) => {
+  return{
+    activeInterest: state.activeInterest
+  };
+}
+
+
+export default connect(mapStateToProps, null)(Multiselect);
