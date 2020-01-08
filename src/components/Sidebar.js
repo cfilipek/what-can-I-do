@@ -3,6 +3,9 @@ import World  from '../assets/world.png';
 import About  from '../assets/white-question-02.png';
 import { Link } from 'react-router-dom';
 import Modal from './Modal';
+import {connect} from 'react-redux';
+import { selectInterest } from '../actions/index';
+import {bindActionCreators} from 'redux';
 
 
 class Sidebar extends Component {
@@ -68,7 +71,7 @@ class Sidebar extends Component {
     return (
       <div className="sidebar-container" ref={node => this.submitPopoverRef = node}>
         <div className="logo">
-          <Link to="/"><img src={World} alt="world logo"/></Link>
+          <Link to="/"><img onClick={()=>(this.props.selectInterest(null))} src={World} alt="world logo"/></Link>
         </div>
         {this.state.isModalOpen?
         (null):
@@ -103,4 +106,9 @@ class Sidebar extends Component {
   }
 }
 
-export default Sidebar;
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({selectInterest: selectInterest}, dispatch)
+}
+
+
+export default connect(null, mapDispatchToProps)(Sidebar);

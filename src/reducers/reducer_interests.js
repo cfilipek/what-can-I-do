@@ -2,7 +2,7 @@ export default function() {
 	return [
 		{title: 'Art-related', subtitle: 'Get those creative juices flowing for the good of yourself and others!',
 		categories:
-			[{title:'visual arts', information: ''}, {title:'writing', information: 'writing'}, {title:'music', information: ''}, {title:'uncatagorized', information: ''}]
+			[{title:'visual arts', information: 'This is information about visual arts'}, {title:'writing', information: 'This is information about writing'}, {title:'music', information: 'This is information about music'}, {title:'uncatagorized', information: 'This is information about other stuff'}]
 		},
 		{title: 'Volunteering'},
 		{title: 'Politically-minded'},

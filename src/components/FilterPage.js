@@ -3,9 +3,11 @@ import MultiSelect from './MultiSelect';
 import Select from './Select';
 import {connect} from 'react-redux';
 
+
 class FilterPage extends Component {
 
   state = {
+    title: [],
     information : [],
     count: 0
   }
@@ -15,9 +17,10 @@ class FilterPage extends Component {
   }
 
   resetInfo = () => {
-    if (this.state.information.length > 1)
+    if (this.state.information.length > 0)
     {(this.setState({information:[]}))}
   }
+
 
   renderInfo() {
 
@@ -28,7 +31,7 @@ class FilterPage extends Component {
             if(interest.title === this.props.activeInterest.title){
               interest.categories.map(i => {
                 if(i.title === category){
-                  this.state.information.push(i.information);
+                  this.state.information.push(i);
                   return null
                 }
                 return (null);
@@ -37,8 +40,12 @@ class FilterPage extends Component {
           return (null);
           })
         ))}
-
-    {Array.from(new Set(this.state.information)).map(info => (<h4>{info}</h4>))}
+        {Array.from(this.state.information.reduce((a, o) => a.set(o.title, o), new Map()).values()).map(info => (
+          <div>
+            <h3 className="information-title">{info.title}</h3>
+            <h4 className="information-text">{info.information}</h4>
+          </div>
+        ))}
 
     </div>): (null))
   }
@@ -57,7 +64,7 @@ class FilterPage extends Component {
          { this.props.activeInterest ?
           (<div>
             <MultiSelect countUp = {this.countUp}/>
-            {this.state.count > 0 ? (this.resetInfo(), this.renderInfo()): (this.renderInfo())}
+            {this.state.count > 0 && this.props.activeInterest !== null ? (this.resetInfo(), this.renderInfo()): (this.renderInfo())}
         </div>): (null)}
         </div>
       </div>
