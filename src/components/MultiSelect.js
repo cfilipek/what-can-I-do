@@ -28,7 +28,7 @@ class Multiselect extends Component {
 			this.setState( {
 				selectedItems: selectedItems,
 			} );
-			this.props.selectCategories(selectedItems);
+			this.props.selectCategories(value);
 		} else {
 			for ( let i = 0; i < selectedItems.length; i++ ) {
 				if ( value === selectedItems[ i ] ) {
@@ -100,7 +100,8 @@ class Multiselect extends Component {
 	}
 
 	hydrateInput() {
-		const items = this.state.selectedItems;
+		// const items = this.state.selectedItems;
+		const items = this.props.activeCategories;
 		return (
 			items.length > 0 ?
 				items.map( ( item, index ) => (

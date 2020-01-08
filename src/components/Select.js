@@ -166,6 +166,7 @@ class Select extends Component {
     this.setState({ currentText: "", option: {}, focusedIndex: 0 });
     this.props.selectInterest(null);
     this.props.deselectCategories();
+    this.props.countUp()
   }
 
 }

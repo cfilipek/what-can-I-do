@@ -33,6 +33,7 @@ h6 {
 
 a {
   font-weight: 700;
+  color: yellow;
 }
 
 //css grid styling
@@ -362,6 +363,19 @@ input::-webkit-input-placeholder{
 .information-container {
   margin: 60px 0px;
   padding-bottom: 40px;
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.span {
+  grid-column: span 4;
+}
+
+.icon {
+  font-size: 60px;
 }
 
 .information-title {
