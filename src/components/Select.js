@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { selectInterest } from '../actions/index';
+import { selectInterest, selectCategories, deselectCategories } from '../actions/index';
 import {bindActionCreators} from 'redux';
 
 const searchIcon = (
@@ -149,6 +149,7 @@ class Select extends Component {
       isFocused: false,
       focusedIndex: 0
     });
+    this.props.deselectCategories();
     this.props.selectInterest(option);
   }
 
@@ -163,7 +164,8 @@ class Select extends Component {
 
   onClear() {
     this.setState({ currentText: "", option: {}, focusedIndex: 0 });
-    this.props.selectInterest(null)
+    this.props.selectInterest(null);
+    this.props.deselectCategories();
   }
 
 }
@@ -178,7 +180,7 @@ const mapStateToProps = (state) => {
 
 
   const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators({selectInterest: selectInterest}, dispatch)
+    return bindActionCreators({selectInterest: selectInterest, selectCategories: selectCategories, deselectCategories: deselectCategories}, dispatch)
   }
 
 

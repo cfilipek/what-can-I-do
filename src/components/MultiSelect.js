@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import { selectCategories, deselectCategories, filterCategory } from '../actions/index';
+import {bindActionCreators} from 'redux';
 
 class Multiselect extends Component {
-  constructor(  ) {
-		super(  );
+  constructor( props ) {
+		super( props );
 
 		this.state = {
 			selectedItems: [],
@@ -26,6 +28,7 @@ class Multiselect extends Component {
 			this.setState( {
 				selectedItems: selectedItems,
 			} );
+			this.props.selectCategories(selectedItems);
 		} else {
 			for ( let i = 0; i < selectedItems.length; i++ ) {
 				if ( value === selectedItems[ i ] ) {
@@ -40,6 +43,7 @@ class Multiselect extends Component {
 			this.setState( {
 				selectedItems: selectedItems,
 			} );
+			this.props.selectCategories(value);
 		}
 	}
 
@@ -53,9 +57,14 @@ class Multiselect extends Component {
 				selectedItems: selectedItems,
 			} );
 		} else {
+			console.log(selectedItems, '?')
 			for ( let i = 0; i < selectedItems.length; i++ ) {
 				if ( value === selectedItems[ i ] ) {
+					this.props.filterCategory(value)
+					this.props.countUp();
 					selectedItems.splice( i, 1 );
+					console.log(selectedItems, '??')
+
 					this.setState( {
 						selectedItems: selectedItems,
 					} );
@@ -67,13 +76,14 @@ class Multiselect extends Component {
 				selectedItems: selectedItems,
 			} );
 		}
+
 	}
 
 	checkStatus = ( item ) => {
+		console.log('here')
 		const status = this.state.selectedItems.some( element => {
 			return element === item;
 		} );
-
 		return status;
 	}
 
@@ -123,9 +133,14 @@ class Multiselect extends Component {
 
 const mapStateToProps = (state) => {
   return{
-    activeInterest: state.activeInterest
+		activeInterest: state.activeInterest,
+		activeCategories: state.activeCategories
   };
 }
 
+const mapDispatchToProps = (dispatch) => {
+	return bindActionCreators({selectCategories: selectCategories, deselectCategories: deselectCategories, filterCategory: filterCategory}, dispatch)
+}
 
-export default connect(mapStateToProps, null)(Multiselect);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Multiselect);
